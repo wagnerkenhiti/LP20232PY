@@ -1,7 +1,7 @@
 import manipulaCSV as mcsv
 
 
-def carregar() ->list: 
+def carregar() -> list: 
     '''
     Carrega o arquivo de Cliente.csv numa lista
     
@@ -14,7 +14,7 @@ def carregar() ->list:
     return lista
     
 
-def cadastrar( listaClientes : list ) -> bool :
+def cadastrar( listaClientes : list ) -> bool:
     '''
     Rotina para cadastrar um cliente
 
@@ -34,6 +34,12 @@ def cadastrar( listaClientes : list ) -> bool :
     print(listaClientes)
     return mcsv.gravarDados('Cliente.csv', camposCliente, listaClientes )
 
+def alterar():
+    '''
+    Função para alterar dados de um cliente
+    item(3)
+    '''
+
 def excluir(listaClientes : list, cpf : str ) -> bool:
     '''
     Excluir um cliente da lista de clientes e atualiza o arquivo CSV
@@ -48,7 +54,9 @@ def excluir(listaClientes : list, cpf : str ) -> bool:
     if flag:
         mcsv.gravarDados("Cliente.csv", camposCliente, listaClientes)
     return flag
-    
-    
-            
-    
+
+def localizarLocacao():
+    '''
+    Função para localizar locações de um cliente
+    item(7)
+    '''

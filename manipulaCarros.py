@@ -1,7 +1,7 @@
 import manipulaCSV as mcsv
 import apresentacao
 
-def carregar() -> list :
+def carregar() -> list:
     '''
     Carrega o arquivo de Carro.csv numa lista
     
@@ -14,7 +14,7 @@ def carregar() -> list :
     return lista
 
 
-def cadastrar( listaCarros : list) -> bool :
+def cadastrar( listaCarros : list ) -> bool:
     '''
     Rotina para cadastrar um carro
 
@@ -31,3 +31,21 @@ def cadastrar( listaCarros : list) -> bool :
     listaCarros.append(cliente)
     print(listaCarros)
     return mcsv.gravarDados('Carro.csv', camposCliente, listaCarros )
+
+def alterar():
+    '''
+    Função para alterar dados de um carro
+    item(2)
+    '''
+
+def excluir():
+    '''
+    Função para excluir dados de um carro
+    item(2)
+    '''
+
+def venda():
+    '''
+    Função para listar carros a venda
+    item(9)
+    '''
