@@ -1,6 +1,7 @@
 from os import system, name
 
 #################################################################
+
 def limpaTela():
     '''
     Limpa a tela de acordo com o sistema operacional
@@ -31,7 +32,6 @@ def MenuPrincipal() -> int :
         print("9. Sair")
         print("-"*50)
         opcao = int(input("Opcao ->"))
-        print("-"*50)
         print("#"*50)
     return opcao
 
@@ -57,7 +57,6 @@ def MenuLocacao() -> int:
         print("9. Sair")
         print("-"*50)
         opcao = int(input("Opcao -> "))
-        print("-"*50)
         print("#"*50)
     return opcao
 
@@ -83,9 +82,9 @@ def MenuCliente() -> int:
         print("9. Sair")
         print("-"*50)
         opcao = int(input("Opcao -> "))
-        print("-"*50)
         print("#"*50)
     return opcao
+
 #################################################################
 
 def MenuCarro() -> int:
@@ -108,7 +107,6 @@ def MenuCarro() -> int:
         print("9. Sair")
         print("-"*50)
         opcao = print(input("Opcao -> "))
-        print("-"*50)
         print("#"*50)
     return opcao
 
@@ -122,13 +120,13 @@ def CadastrarCliente() -> dict :
     -------
     Retorna um dicionário com as informações de um cliente    
     '''
-    print("#"*30)
+    print("#"*50)
     print("Cadastramento de um novo cliente ")
     l = ["CPF","Nome","Nascimento","Idade","Endereço","Cidade","Estado"]
     cliente = {}
     for campo in l:
         cliente[campo] = input(f"{campo}:")
-        print("#"*30)
+        print("#"*50)
     return cliente
 
 #################################################################    
@@ -143,7 +141,7 @@ def CadastrarCarro() -> dict:
     '''
     print("#"*30)
     print("Cadastramento de um novo carro ")
-    l = ["Identificacao","Modelo","Cor","AnoFabricacao","Placa","Cambio","Categoria", "Km", "Diaria", "Seguro", "Disponivel"]
+    l = ["Identificacao","Modelo","Cor","AnoFabricacao","Placa","Cambio","Categoria","Km","Diaria","Seguro","Disponivel"]
     carro = {}
     for campo in l:
         carro[campo] = input(f"{campo}:")

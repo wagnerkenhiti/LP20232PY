@@ -2,11 +2,15 @@ import apresentacao
 import csv
 import datetime
 
+#################################################################
+
 def novaLocacao():
     '''
     Função que cadastra uma nova locação de um carro
     item(4)
     '''
+
+#################################################################
 
 def encerraLocacao() -> bool:
     '''
@@ -62,6 +66,8 @@ def encerraLocacao() -> bool:
     
     #Atualizar dados em Carros.csv
 
+#################################################################
+
 def carrosDisponiveis(categoria_procurar) -> bool:
     '''
     Função que mostra quais carros de determinada categoria estão disponiveis para locação
@@ -91,6 +97,8 @@ def carrosDisponiveis(categoria_procurar) -> bool:
     except FileNotFoundError:
         print("Arquivo não encontrado.")
         return False
+
+#################################################################
 
 def carrosLocados():
     '''

@@ -1,6 +1,7 @@
 import csv
 
- 
+#################################################################
+
 def carregarDados( nomeArquivo: str) -> list : 
     ''' Carrega do arquivo CSV uma lista de informações, com cada item
     da lista sendo um dicionário
@@ -53,4 +54,3 @@ def gravarDados( nomeArquivo: str, campos : list, lista : list ) -> bool :
     except FileNotFoundError:
         print("erro na abertura do arquivo ", nomeArquivo)
         return False
-
