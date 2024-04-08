@@ -57,6 +57,8 @@ def encerraLocacao() -> bool:
     print(f"{dias} dias e {horas} horas utilizadas" )
 
     #Calculo do valor da locação
+    if dias == 0:
+        valor_pagar = valor_diaria
     valor_pagar = (dias * valor_diaria) + (horas/24 * valor_diaria)
 
     #Quilometragem do carro no momento da entrega
