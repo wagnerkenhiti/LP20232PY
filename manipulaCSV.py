@@ -3,7 +3,8 @@ import csv
 #################################################################
 
 def carregarDados( nomeArquivo: str) -> list : 
-    ''' Carrega do arquivo CSV uma lista de informações, com cada item
+    '''
+    Carrega do arquivo CSV uma lista de informações, com cada item
     da lista sendo um dicionário
 
     Parâmetros
@@ -27,7 +28,8 @@ def carregarDados( nomeArquivo: str) -> list :
 ########################################################
 
 def gravarDados( nomeArquivo: str, campos : list, lista : list ) -> bool :
-    '''Grava a informação da lista em um arquivo CSV
+    '''
+    Grava a informação da lista em um arquivo CSV
     
     Parâmetros
     ----------

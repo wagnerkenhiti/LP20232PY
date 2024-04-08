@@ -25,7 +25,7 @@ def encerraLocacao() -> bool:
 
     #Procurar o valor da diária do carro no Carros.csv
     try:
-        arq = open("Carros.csv")
+        arq = open("Carro.csv")
         listaCarros = csv.DictReader(arq, delimiter=";")
         for carro in listaCarros:
             if carro['Identificacao'] == identificacao:
@@ -65,6 +65,17 @@ def encerraLocacao() -> bool:
     #Atualizar dados em Locacoes.csv
     
     #Atualizar dados em Carros.csv
+    try:
+        arq = open("Carro.csv")
+        listaCarros = csv.DictReader(arq, delimiter=";")
+        for carro in listaCarros:
+            if carro['Identificacao'] == identificacao:
+                carro['Disponivel'] = "Sim"
+                carro['Km'] = quilometragem
+        arq.close()
+    except FileNotFoundError:
+        print("Arquivo não encontrado.")
+        return False
 
 #################################################################
 
@@ -82,7 +93,7 @@ def carrosDisponiveis(categoria_procurar) -> bool:
     Retorna False se o arquivo Carros.csv não foi encontrado
     '''
     try:
-        arq = open("Carros.csv")
+        arq = open("Carro.csv")
         listaCarros = csv.DictReader(arq, delimiter=";")
         for carro in listaCarros:
             if carro['Categoria'] == categoria_procurar:
