@@ -31,7 +31,7 @@ def MenuPrincipal() -> int :
         print("3. Carro")
         print("9. Sair")
         print("-"*50)
-        opcao = int(input("Opcao ->"))
+        opcao = int(input("Opcao -> "))
         print("#"*50)
     return opcao
 
@@ -125,7 +125,7 @@ def CadastrarCliente() -> dict :
     l = ["CPF","Nome","Nascimento","Idade","Endereço","Cidade","Estado"]
     cliente = {}
     for campo in l:
-        cliente[campo] = input(f"{campo}:")
+        cliente[campo] = input(f"{campo}: ")
         print("#"*50)
     return cliente
 
@@ -144,6 +144,6 @@ def CadastrarCarro() -> dict:
     l = ["Identificacao","Modelo","Cor","AnoFabricacao","Placa","Cambio","Categoria","Km","Diaria","Seguro","Disponivel"]
     carro = {}
     for campo in l:
-        carro[campo] = input(f"{campo}:")
+        carro[campo] = input(f"{campo}: ")
         print("#"*30)
     return carro   

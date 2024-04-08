@@ -90,7 +90,7 @@ def carrosDisponiveis(categoria_procurar) -> bool:
                     print("-"*50)
                     l = ["Identificacao","Modelo","Cor","AnoFabricacao","Placa","Cambio","Categoria","Km","Diaria","Seguro","Disponivel"]
                     for campo in l:
-                        carro[campo] = print(f"{campo}: {carro[campo]}")
+                        print(f"{campo}: {carro[campo]}")
                     print("-"*50)
         arq.close()
         return True
