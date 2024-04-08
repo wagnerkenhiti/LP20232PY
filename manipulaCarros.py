@@ -1,4 +1,5 @@
 import manipulaCSV as mcsv
+import manipulaLocacao as mloc
 import apresentacao
 
 def carregar() -> list:
@@ -8,7 +9,7 @@ def carregar() -> list:
     Retorno
     -------
     Retorna uma lista vazia caso o arquivo não exista ou 
-    uma lista de dicionários contendo os dados dos clientes
+    uma lista de dicionários contendo os dados dos carros
     '''
     lista = mcsv.carregarDados("Carro.csv")
     return lista
@@ -45,7 +46,8 @@ def excluir():
     '''
 
 def venda():
-    '''
-    Função para listar carros a venda
-    item(9)
-    '''
+    lista = carregar()
+    camposCliente =  ["Identificacao","Modelo","Cor","AnoFabricacao","Placa","Cambio","Categoria", "Km", "Diaria", "Seguro", "Disponivel"]
+    for i in lista:
+        if(2024-int(i['AnoFabricacao'])>=3 or int(i['Km'])>60000):
+            mcsv.gravarDados("vendas.csv",camposCliente,[i])

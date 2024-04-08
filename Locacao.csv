@@ -1,0 +1,2 @@
+ID locacao;ID carro;CPF cliente;Data inicial da locacao;Data final da locacao;Km inicial;Km final;Seguro
+1;2;123.456.789-22;07/04/2025 20:00;0/0/0 00:00;300;0;sim

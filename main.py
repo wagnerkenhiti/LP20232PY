@@ -1,10 +1,14 @@
 import manipulaCSV as mcsv
 import manipulaClientes as mcli
 import manipulaCarros as mcar
+import manipulaLocacao as mloc
 import apresentacao
-
+# 123.456.789-22
+# 07/04/2025 20h
 
 def main():
+    mloc.carrosLocados()
+    '''
     # exemplo de uso do menu (ainda não faz nada de util, so é exibido)
     opcao = apresentacao.MenuPrincipal()
     print(f'Opção desejada foi {opcao}')
@@ -33,6 +37,7 @@ def main():
     print("*"*30)
     listaCarros = mcar.carregar()
     mcar.cadastrar(listaCarros)
+    '''
     
 
 # Inicio do programa 
