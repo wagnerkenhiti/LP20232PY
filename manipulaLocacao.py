@@ -5,6 +5,7 @@ import manipulaCSV as mcsv
 import manipulaClientes as mcli
 import manipulaCarros as mcar
 
+#################################################################
 
 def novaLocacao():
     '''
@@ -57,6 +58,7 @@ def novaLocacao():
             "Km final": 0,"Seguro": seguro}]
     mcsv.gravarDados("Locacao.csv",campos,lista)
 
+#################################################################
 
 def identificaID()-> int:
     try:
@@ -70,6 +72,8 @@ def identificaID()-> int:
     for i in listaClientes:
         j=int(i['ID locacao'])
     return j
+
+#################################################################
     
 def encerraLocacao():
     '''
@@ -132,6 +136,8 @@ def encerraLocacao():
     
     #Atualizar dados em Carros.csv
 
+#################################################################
+
 def carrosDisponiveis(categoria_procurar) -> bool:
     '''
     Função que mostra quais carros de determinada categoria estão disponiveis para locação
@@ -161,6 +167,8 @@ def carrosDisponiveis(categoria_procurar) -> bool:
     except FileNotFoundError:
         print("Arquivo não encontrado.")
         return False
+
+#################################################################
 
 def carrosLocados():
     '''
