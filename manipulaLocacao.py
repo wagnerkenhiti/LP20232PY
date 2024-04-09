@@ -74,8 +74,63 @@ def identificaID()-> int:
 def encerraLocacao():
     '''
     Função que encerra a locação de um carro
-    item(5)
     '''
+    #Número de identificação da locação
+    identificacao_locacao = input("Identificação da locação: ")
+
+    #Procurar data de início da locação e ID do carro em Locacoes.csv
+    try:
+        arq = open("Locacao.csv", "r")
+        listaLocacao = csv.DictReader(arq, delimiter=";")
+        for locacao in listaLocacao:
+            if locacao['ID locacao'] == identificacao_locacao:
+                identificacao_carro = locacao['ID carro']
+                data_entrada = locacao['Data inicial da locacao']
+        arq.close()
+    except FileNotFoundError:
+        print("Arquivo não encontrado.")
+
+    #Procurar o valor da diária do carro no Carros.csv
+    try:
+        arq = open("Carro.csv", "r")
+        listaCarros = csv.DictReader(arq, delimiter=";")
+        for carro in listaCarros:
+            if carro['Identificacao'] == identificacao_carro:
+                valor_diaria = carro['Diaria']
+        arq.close()
+    except FileNotFoundError:
+        print("Arquivo não encontrado.")
+
+    #Data de encerramento da locação
+    saida = input("Data da devolução (dia/mes/ano): ")
+    horario_saida = input("Horário de devolução (hh:mm): ")
+    saida = saida + " " + horario_saida
+    data_saida = datetime.datetime.strptime(saida)
+
+    #Calculo da quantidade de tempo decorrido
+    tempo_decorrido = data_saida - data_entrada
+    print(tempo_decorrido)
+    if tempo_decorrido.days > 0:
+        [dummy, horas] =  str(tempo_decorrido).split(',')
+        [horas, minutos, segundos] = horas.split(":")    
+    else:
+        [horas, minutos, segundos] = str(tempo_decorrido).split(":")
+
+    #Exibindo horas e minutos utilizados, conferir se o calculo foi feito corretamente (tirar depois)
+    dias = tempo_decorrido.days
+    print(f"{dias} dias e {horas} horas utilizadas" )
+
+    #Calculo do valor da locação
+    if dias == 0:
+        valor_pagar = valor_diaria
+    valor_pagar = (dias * valor_diaria) + (horas/24 * valor_diaria)
+
+    #Quilometragem do carro no momento da entrega
+    quilometragem = float(input("Quilometragem do carro: "))
+
+    #Atualizar dados em Locacoes.csv
+    
+    #Atualizar dados em Carros.csv
 
 def carrosDisponiveis():
     '''
