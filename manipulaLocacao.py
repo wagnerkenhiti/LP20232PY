@@ -68,7 +68,7 @@ def identificaID()-> int:
     except FileNotFoundError:
         print("Arquivo não encontrado Locacao")
         return 0
-    j=1
+    j = 1
     for i in listaClientes:
         j=int(i['ID locacao'])
     return j
@@ -148,25 +148,26 @@ def carrosDisponiveis(categoria_procurar) -> bool:
 
     Retorno
     -------
-    Retorna True se o arquivo Carros.csv foi aberto com sucesso
-    Retorna False se o arquivo Carros.csv não foi encontrado
+    Retorna True se o arquivo Carros.csv foi aberto com sucesso e há carros disponiveis em tal categoria
+    Retorna False se o arquivo Carros.csv não foi encontrado ou não carros disponiveis em tal categoria
     '''
+    verifica = False
     try:
         arq = open("Carro.csv")
         listaCarros = csv.DictReader(arq, delimiter=";")
         for carro in listaCarros:
             if carro['Categoria'] == categoria_procurar:
                 if carro['Disponivel'] == "Sim":
+                    verifica = True
                     print("-"*50)
                     l = ["Identificacao","Modelo","Cor","AnoFabricacao","Placa","Cambio","Categoria","Km","Diaria","Seguro","Disponivel"]
                     for campo in l:
                         print(f"{campo}: {carro[campo]}")
                     print("-"*50)
         arq.close()
-        return True
     except FileNotFoundError:
         print("Arquivo não encontrado.")
-        return False
+    return verifica
 
 #################################################################
 

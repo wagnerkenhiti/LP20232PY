@@ -52,7 +52,7 @@ def MenuLocacao() -> int:
         print("#"*50)
         print("1. Cadastrar uma nova locação")
         print("2. Encerrar uma locação")
-        print("3. Carros disponíveis para locação")
+        print("3. Carros disponíveis para locação por categoria")
         print("4. Relatório de carros locados")
         print("9. Sair")
         print("-"*50)

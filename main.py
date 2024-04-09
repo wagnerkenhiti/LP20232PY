@@ -7,7 +7,6 @@ import apresentacao
 # 07/04/2025 20h
 
 def main():
-    mloc.carrosLocados()
     '''
     # exemplo de uso do menu (ainda não faz nada de util, so é exibido)
     opcao = apresentacao.MenuPrincipal()
@@ -38,7 +37,44 @@ def main():
     listaCarros = mcar.carregar()
     mcar.cadastrar(listaCarros)
     '''
+    opcao = apresentacao.MenuPrincipal()
+    while (opcao != 9):
+        if opcao == 1:
+            opcao1 = apresentacao.MenuLocacao()
+            if opcao1 == 1:
+                mloc.novaLocacao()
+            elif opcao1 == 2:
+                mloc.encerraLocacao()
+            elif opcao1 == 3:
+                categoria_procurar = input("Digite a categoria de carro para procurar: ")
+                verifica = mloc.carrosDisponiveis(categoria_procurar)
+                if verifica == False:
+                    print("Não há carros disponiveis nessa categoria.")
+            elif opcao1 == 4:
+                mloc.carrosLocados()
+        elif opcao == 2:
+            opcao1 = apresentacao.MenuCliente()
+            if opcao1 == 1:
+                mcli.cadastrar()
+            elif opcao1 == 2:
+                mcli.alterar()
+            elif opcao1 == 3:
+                mcli.excluir()
+            elif opcao1 == 4:
+                mcli.localizarLocacao()
+        elif opcao == 3:
+            opcao1 = apresentacao.MenuCarro()
+            if opcao1 == 1:
+                mcar.cadastrar()
+            elif opcao1 == 2:
+                mcar.alterar()
+            elif opcao1 == 3:
+                mcar.excluir()
+            elif opcao1 == 4:
+                mcar.venda()
+        opcao = apresentacao.MenuPrincipal()
     
+    print("Encerrando o programa.")
 
 # Inicio do programa 
 if __name__ == "__main__":
