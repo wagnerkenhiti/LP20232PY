@@ -132,11 +132,35 @@ def encerraLocacao():
     
     #Atualizar dados em Carros.csv
 
-def carrosDisponiveis():
+def carrosDisponiveis(categoria_procurar) -> bool:
     '''
-    Função que mostra quais carros estão disponiveis para locação
-    item(8)
+    Função que mostra quais carros de determinada categoria estão disponiveis para locação
+
+    Parâmetros
+    ----------
+    categoria_procurar: string com o nome da categoria
+
+    Retorno
+    -------
+    Retorna True se o arquivo Carros.csv foi aberto com sucesso
+    Retorna False se o arquivo Carros.csv não foi encontrado
     '''
+    try:
+        arq = open("Carro.csv")
+        listaCarros = csv.DictReader(arq, delimiter=";")
+        for carro in listaCarros:
+            if carro['Categoria'] == categoria_procurar:
+                if carro['Disponivel'] == "Sim":
+                    print("-"*50)
+                    l = ["Identificacao","Modelo","Cor","AnoFabricacao","Placa","Cambio","Categoria","Km","Diaria","Seguro","Disponivel"]
+                    for campo in l:
+                        print(f"{campo}: {carro[campo]}")
+                    print("-"*50)
+        arq.close()
+        return True
+    except FileNotFoundError:
+        print("Arquivo não encontrado.")
+        return False
 
 def carrosLocados():
     '''
