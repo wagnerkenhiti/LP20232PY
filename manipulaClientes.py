@@ -34,11 +34,37 @@ def cadastrar( listaClientes : list ) -> bool:
     print(listaClientes)
     return mcsv.gravarDados('Cliente.csv', camposCliente, listaClientes )
 
-def alterar():
-    '''
-    Função para alterar dados de um cliente
-    item(3)
-    '''
+import csv
+
+def alterar(cpf: str):
+    flag = False 
+    clientes = []
+        
+    with open('Cliente.csv', 'r', newline='') as arquivo_origem:
+        clientes = list(csv.DictReader(arquivo_origem, delimiter=';'))
+
+    with open('Cliente.csv', 'w', newline='') as arquivo_destino:
+        nomes_colunas = ['CPF', 'Nome', 'Nascimento', 'Idade', 'Endereço', 'Cidade', 'Estado']
+        escritor = csv.DictWriter(arquivo_destino, fieldnames=nomes_colunas, delimiter=';')
+        escritor.writeheader()
+
+        for cliente in clientes:
+            if cliente['CPF'] == cpf:
+                campo_alterar = int(input('Digite o número correspondente ao campo que deseja alterar:\n1 - CPF\n2 - Nome\n3 - Nascimento\n4 - Idade\n5 - Endereço\n6 - Cidade\n7 - Estado\n'))
+                while campo_alterar < 1 or campo_alterar > 7:
+                    print('Número inválido. Por favor, insira um número válido de 1 a 7.')
+                    campo_alterar = int(input('Digite o número correspondente ao campo que deseja alterar:\n1 - CPF\n2 - Nome\n3 - Nascimento\n4 - Idade\n5 - Endereço\n6 - Cidade\n7 - Estado\n'))
+                    
+                novo_valor = input(f'Informe o novo valor para {nomes_colunas[campo_alterar - 1]}: ')
+                cliente[nomes_colunas[campo_alterar - 1]] = novo_valor
+                flag = True 
+
+            escritor.writerow(cliente)
+        
+    if flag:
+        print("Sucesso")    
+    else:
+        print("Erro")
 
 def excluir(listaClientes : list, cpf : str ) -> bool:
     '''
