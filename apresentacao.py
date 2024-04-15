@@ -24,7 +24,6 @@ def MenuPrincipal() -> int :
     opcoes= [1, 2, 3, 9]
     opcao = 10
     while opcao not in opcoes:
-        limpaTela()
         print("#"*50)
         print("1. Locação")
         print("2. Cliente")
@@ -48,7 +47,6 @@ def MenuLocacao() -> int:
     opcoes = [1, 2, 3, 9]
     opcao = 10
     while opcao not in opcoes:
-        limpaTela()
         print("#"*50)
         print("1. Cadastrar uma nova locação")
         print("2. Encerrar uma locação")
@@ -73,7 +71,6 @@ def MenuCliente() -> int:
     opcoes = [1, 2, 3, 4, 9]
     opcao = 10
     while opcao not in opcoes:
-        limpaTela()
         print("#"*50)
         print("1. Cadastar novo cliente")
         print("2. Atualizar dados de cliente")
@@ -98,7 +95,6 @@ def MenuCarro() -> int:
     opcoes = [1, 2, 3, 4, 9]
     opcao = 10
     while opcao not in opcoes:
-        limpaTela()
         print("#"*50)
         print("1. Cadastrar novo carro")
         print("2. Atualizar dados de um carro")

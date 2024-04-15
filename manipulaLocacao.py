@@ -89,7 +89,7 @@ def encerraLocacao():
         for locacao in listaLocacao:
             if locacao['ID locacao'] == identificacao_locacao:
                 identificacao_carro = locacao['ID carro']
-                data_entrada = locacao['Data inicial da locacao']
+                entrada = locacao['Data inicial da locacao']
         arq.close()
     except FileNotFoundError:
         print("Arquivo não encontrado.")
@@ -106,13 +106,13 @@ def encerraLocacao():
         print("Arquivo não encontrado.")
 
     #Data de encerramento da locação
-    saida = input("Data da devolução (dia/mes/ano): ")
+    data_saida = input("Data da devolução (dia/mes/ano): ")
     horario_saida = input("Horário de devolução (hh:mm): ")
-    saida = saida + " " + horario_saida
-    data_saida = datetime.datetime.strptime(saida)
+    data_saida = data_saida + " " + horario_saida
+    saida = datetime.datetime.strptime(data_saida, "%d/%m/%Y %H:%M")
 
     #Calculo da quantidade de tempo decorrido
-    tempo_decorrido = data_saida - data_entrada
+    tempo_decorrido = saida - entrada
     print(tempo_decorrido)
     if tempo_decorrido.days > 0:
         [dummy, horas] =  str(tempo_decorrido).split(',')
@@ -127,7 +127,8 @@ def encerraLocacao():
     #Calculo do valor da locação
     if dias == 0:
         valor_pagar = valor_diaria
-    valor_pagar = (dias * valor_diaria) + (horas/24 * valor_diaria)
+    else:
+        valor_pagar = (dias * valor_diaria) + (horas/24 * valor_diaria)
 
     #Quilometragem do carro no momento da entrega
     quilometragem = float(input("Quilometragem do carro: "))

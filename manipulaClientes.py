@@ -40,7 +40,7 @@ def alterar():
     item(3)
     '''
 
-def excluir(listaClientes : list, cpf : str ) -> bool:
+def excluir(listaClientes : list, cpf : str) -> bool:
     '''
     Excluir um cliente da lista de clientes e atualiza o arquivo CSV
     '''
@@ -60,4 +60,3 @@ def localizarLocacao():
     Função para localizar locações de um cliente
     item(7)
     '''
-

@@ -1,3 +1,4 @@
+import csv
 import manipulaCSV as mcsv
 import manipulaLocacao as mloc
 import apresentacao
