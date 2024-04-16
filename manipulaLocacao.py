@@ -151,6 +151,8 @@ def encerraLocacao() -> bool:
                     campo_alterar_2 = 'Km final'
                     linha[campo_alterar_1] = tempo_decorrido
                     linha[campo_alterar_2] = quilometragem
+        arq_origem.close()
+        arq_destino.close()
     except FileNotFoundError:
         print("Arquivo não encontrado.")
         return False
@@ -169,9 +171,14 @@ def encerraLocacao() -> bool:
                     campo_alterar = 'Km'                    
                     linha[campo_alterar] = quilometragem
                 escritor.writerow(linha)
+        arquivo_origem.close()
+        arquivo_destino.close()
     except FileNotFoundError:
         print('Arquivo não encontrado.')
         return False
+
+    print(f"O valor a pagar é de R${valor_pagar: .2f}.")
+    return True
 
 #################################################################
 
