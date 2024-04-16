@@ -6,6 +6,8 @@ import apresentacao
 # 123.456.789-22
 # 07/04/2025 20h
 
+#utilizar continue nas vendas
+
 def main():
     '''
     # exemplo de uso do menu (ainda não faz nada de util, so é exibido)
@@ -51,6 +53,7 @@ def main():
                 if verifica == False:
                     print("Não há carros disponiveis nessa categoria.")
             elif opcao1 == 4:
+                #20/04/2024 21:00
                 mloc.carrosLocados()
         elif opcao == 2:
             opcao1 = apresentacao.MenuCliente()
@@ -75,6 +78,7 @@ def main():
         opcao = apresentacao.MenuPrincipal()
     
     print("Encerrando o programa.")
+    
 
 # Inicio do programa 
 if __name__ == "__main__":

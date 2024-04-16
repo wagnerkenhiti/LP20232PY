@@ -63,6 +63,8 @@ def alterar( placa : str) -> bool:
                     linha[campo_alterar] = novo_valor
 
                 escritor.writerow(linha)
+        arquivo_origem.close()
+        arquivo_destino.close()
         
         return True
     except FileNotFoundError:
@@ -94,5 +96,6 @@ def venda():
     lista = carregar()
     camposCliente =  ["Identificacao","Modelo","Cor","AnoFabricacao","Placa","Cambio","Categoria","Km","Diaria","Seguro","Disponivel"]
     for i in lista:
-        if(2024-int(i['AnoFabricacao'])>=3 or int(i['Km'])>60000):
+        if((2024-int(i['AnoFabricacao'])>=3 or int(i['Km'])>60000) and i["Disponivel"].lower()=="sim"):
             mcsv.gravarDados("vendas.csv",camposCliente,[i])
+            

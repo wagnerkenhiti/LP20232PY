@@ -44,7 +44,7 @@ def MenuLocacao() -> int:
     -------
     Retorna opção escolhida pelo usuário
     '''
-    opcoes = [1, 2, 3, 9]
+    opcoes = [1, 2, 3,4, 9]
     opcao = 10
     while opcao not in opcoes:
         print("#"*50)

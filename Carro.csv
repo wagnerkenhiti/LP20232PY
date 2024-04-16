@@ -1,3 +1,3 @@
 Identificacao;Modelo;Cor;AnoFabricacao;Placa;Cambio;Categoria;Km;Diaria;Seguro;Disponivel
-1;Polo;Preto;2024;AAA-9A99;Manual;Econômico;100;120.00;12;Sim
-2;KA;Prata;2009;HWG-0565;Manual;Compacto;300;75.50;10;Nao
+1;Polo;Preto;2024;AAA-9A99;Manual;Economico;1400.0;120.00;12;sim
+2;KA;Prata;2009;HWG-0565;Manual;Compacto;2000.0;75.50;10;sim
