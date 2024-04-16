@@ -38,7 +38,8 @@ import csv
 
 def alterar(cpf: str):
     flag = False 
-    clientes = []
+    clientes = [] 
+    
         
     with open('Cliente.csv', 'r', newline='') as arquivo_origem:
         clientes = list(csv.DictReader(arquivo_origem, delimiter=';'))
