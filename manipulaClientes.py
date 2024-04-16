@@ -14,7 +14,7 @@ def carregar() -> list:
     return lista
     
 
-def cadastrar( listaClientes : list ) -> bool:
+def cadastrar(listaClientes : list) -> bool:
     '''
     Rotina para cadastrar um cliente
 
@@ -43,6 +43,15 @@ def alterar():
 def excluir(listaClientes : list, cpf : str) -> bool:
     '''
     Excluir um cliente da lista de clientes e atualiza o arquivo CSV
+
+    Parâmetros
+    ----------
+    listaClientes: 
+    cpf: CPF do cliente que deseja excluir os dados
+
+    Rteorno
+    -------
+    Retorna True caso foi excluido com sucesso
     '''
     flag = False
     camposCliente = list(listaClientes[0].keys())

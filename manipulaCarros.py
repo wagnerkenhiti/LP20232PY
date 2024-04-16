@@ -39,7 +39,18 @@ def cadastrar(listaCarros : list) -> bool:
 
 #################################################################
 
-def alterar( placa : str) -> bool:
+def alterar(placa : str) -> bool:
+    '''
+    Função para alterar dados de um carro
+
+    Parâmetro
+    ---------
+    placa: placa do carro que se deseja alterar
+
+    Retorno
+    -------
+    Retorna True caso foi alterado com sucesso
+    '''
     linhas = []
     try:
         with open('Carro.csv', 'r', newline='') as arquivo_origem:
@@ -74,6 +85,17 @@ def alterar( placa : str) -> bool:
 #################################################################
 
 def excluir(placa : str) -> bool:
+    '''
+    Excluir um carro da lista de carros e atualiza o arquivo CSV
+
+    Parâmetros
+    ----------
+    placa: placa do carro que se deseja excluir
+
+    Retorno
+    -------
+    Retorna True caso foi excluido com sucesso
+    '''
     linhas = []
     try:
         with open('Carro.csv' , 'r') as arquivo:
@@ -90,6 +112,7 @@ def excluir(placa : str) -> bool:
     except FileNotFoundError:
         print('Arquivo não encontrado.')
         return False
+    
 #################################################################
 
 def venda():
