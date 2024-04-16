@@ -105,15 +105,13 @@ def localizarLocacao(identificacao: str)-> bool:
     Falso caso contrario
     '''
     listaCarros = mcar.carregar()
-    listaClientes= carregar()
     listaLocacao = mcsv.carregarDados("Locacao.csv")
     listaCarros1 = []
-    listaLocacao1 = []
     for l1 in listaCarros:
-        if(l1['Disponivel'].lower()=='nao'):
-            listaCarros1.append([l1['Identificacao'],l1['Modelo'],l1['Placa'],l1['Categoria'],l1['Diaria'],l1['Seguro']])
+        listaCarros1.append([l1['Identificacao'],l1['Modelo'],l1['Placa'],l1['Categoria'],l1['Diaria'],l1['Seguro']])
     for i in listaCarros1:
         for l1 in listaLocacao:
+            print(l1['CPF cliente'],identificacao)
             if(l1['ID carro']==i[0] and float(l1['Km final'])!=0 and l1['CPF cliente']==identificacao):
                 data2 = datetime.datetime.strptime(l1['Data inicial da locacao'], "%d/%m/%Y %H:%M")
                 data1 = datetime.datetime.strptime(l1['Data final da locacao'], "%d/%m/%Y %H:%M")
@@ -131,7 +129,7 @@ def localizarLocacao(identificacao: str)-> bool:
            Placa do carro: {i[2]}
            Data inicial: {l1['Data inicial da locacao']}
            Data final: {l1['Data final da locacao']}
-           Km percorrida: {float(l1['Km final']-float(l1['Km inicial']))}
+           Km percorrida: {float(l1['Km final'])-float(l1['Km inicial'])}
            Valor total a receber: R${(ddias*float(i[4]) + seguro):.2f}""")
                 break
    

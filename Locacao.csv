@@ -1,3 +1,2 @@
 ID locacao;ID carro;CPF cliente;Data inicial da locacao;Data final da locacao;Km inicial;Km final;Seguro
-1;1;111.222.333-43;10/04/2024 14:00;17/04/2024 11:00;100;1400.0;sim
-2;2;100.243.434-23;04/04/2024 11:00;17/04/2024 18:00;1200.0;2000.0;nao
+1;2;123.456.789-22;15/04/2024 14:00;20/04/2024 17:00;2000.0;2500.0;sim
