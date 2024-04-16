@@ -42,10 +42,10 @@ def cadastrar(listaCarros : list) -> bool:
 def alterar( placa : str) -> bool:
     linhas = []
     try:
-        with open('carros.csv', 'r', newline='') as arquivo_origem:
+        with open('Carro.csv', 'r', newline='') as arquivo_origem:
             linhas = list(csv.DictReader(arquivo_origem, delimiter=';'))
 
-        with open('carros.csv', 'w', newline='') as arquivo_destino:
+        with open('Carro.csv', 'w', newline='') as arquivo_destino:
             nomes_colunas = ['Identificacao', 'Modelo', 'Cor', 'AnoFabricacao', 'Placa', 'Cambio', 'Categoria', 'Km', 'Diaria', 'Seguro', 'Disponivel']
             escritor = csv.DictWriter(arquivo_destino, fieldnames=nomes_colunas, delimiter=';')
             escritor.writeheader()

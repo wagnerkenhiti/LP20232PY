@@ -75,7 +75,7 @@ def identificaID()-> int:
 
 #################################################################
     
-def encerraLocacao():
+def encerraLocacao() -> bool:
     '''
     Função que encerra a locação de um carro
     '''
@@ -93,17 +93,20 @@ def encerraLocacao():
         arq.close()
     except FileNotFoundError:
         print("Arquivo não encontrado.")
+        return False
 
-    #Procurar o valor da diária do carro no Carros.csv
+    #Procurar o valor da diária e a placa do carro no Carros.csv
     try:
         arq = open("Carro.csv", "r")
         listaCarros = csv.DictReader(arq, delimiter=";")
         for carro in listaCarros:
             if carro['Identificacao'] == identificacao_carro:
                 valor_diaria = carro['Diaria']
+                placa_carro = carro['Placa']
         arq.close()
     except FileNotFoundError:
         print("Arquivo não encontrado.")
+        return False
 
     #Data de encerramento da locação
     data_saida = input("Data da devolução (dia/mes/ano): ")
@@ -134,8 +137,41 @@ def encerraLocacao():
     quilometragem = float(input("Quilometragem do carro: "))
 
     #Atualizar dados em Locacoes.csv
+    linhas = []
+    try:
+        with open('Locacao.csv', 'r', newline='') as arq_origem:
+            linhas = list(csv.DictReader(arq_origem, delimiter=';'))
+        with open('Locacao.csv', 'w', newline='') as arq_destino:
+            nomes_colunas = ['ID locacao','ID carro','CPF cliente','Data inicial da locacao','Data final da locacao','Km inicial','Km final','Seguro']
+            escritor = csv.DictWriter(arq_destino, fieldnames=nomes_colunas, delimiter=';')
+            escritor.writeheader()
+            for linha in linhas:
+                if linha['ID locacao'] == identificacao_locacao:
+                    campo_alterar_1 = 'Data final da locacao'
+                    campo_alterar_2 = 'Km final'
+                    linha[campo_alterar_1] = tempo_decorrido
+                    linha[campo_alterar_2] = quilometragem
+    except FileNotFoundError:
+        print("Arquivo não encontrado.")
+        return False
     
     #Atualizar dados em Carros.csv
+    linhas = []
+    try:
+        with open('Carro.csv', 'r', newline='') as arquivo_origem:
+            linhas = list(csv.DictReader(arquivo_origem, delimiter=';'))
+        with open('Carro.csv', 'w', newline='') as arquivo_destino:
+            nomes_colunas = ['Identificacao', 'Modelo', 'Cor', 'AnoFabricacao', 'Placa', 'Cambio', 'Categoria', 'Km', 'Diaria', 'Seguro', 'Disponivel']
+            escritor = csv.DictWriter(arquivo_destino, fieldnames=nomes_colunas, delimiter=';')
+            escritor.writeheader()
+            for linha in linhas:
+                if linha['Placa'] == placa_carro:
+                    campo_alterar = 'Km'                    
+                    linha[campo_alterar] = quilometragem
+                escritor.writerow(linha)
+    except FileNotFoundError:
+        print('Arquivo não encontrado.')
+        return False
 
 #################################################################
 
