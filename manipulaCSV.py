@@ -18,8 +18,7 @@ def carregarDados(nomeArquivo: str) -> list :
     '''
     try:
         arq = open(nomeArquivo, "r")
-        listaClientes = csv.DictReader(arq, delimiter=';')
-        listaClientes = list(listaClientes)
+        listaClientes = list(csv.DictReader(arq, delimiter=';'))
     except FileNotFoundError:
         print("Arquivo não encontrado ", nomeArquivo)
         return []
@@ -46,8 +45,8 @@ def gravarDados(nomeArquivo: str, campos : list, lista : list) -> bool :
         # abrindo o arquivo a ser gravado para escrita(sobreescreve o existente)
         arq = open(nomeArquivo, "w", newline='')
         meuCSV = csv.DictWriter(arq,fieldnames=campos, delimiter=';')
-        meuCSV.writeheader()        
-        for r in lista:            
+        meuCSV.writeheader()
+        for r in lista:
             meuCSV.writerow(r)
             arq.flush()
         arq.close()

@@ -229,6 +229,7 @@ def carrosDisponiveis(categoria_procurar) -> bool:
 
 #################################################################
 
+
 def carrosLocados():
     '''
     Função que mostra quais carros estão locados
@@ -238,7 +239,7 @@ def carrosLocados():
     data1 = datetime.datetime.strptime(data1, "%d/%m/%Y %H:%M")
     listaCarros = mcar.carregar()
     listaClientes= mcli.carregar()
-    listaLocacao = lista=mcsv.carregarDados("Locacao.csv")
+    listaLocacao = mcsv.carregarDados("Locacao.csv")
     listaCarros1 = []
     listaLocacao1 = []
     listaClientes1 = []
@@ -269,7 +270,8 @@ def carrosLocados():
         for l1 in listaClientes:
             if(l1['CPF']==i[0]):
                 listaClientes1.append(l1['Nome'])
-    for i in range(len(listaCarros1)): 
+    #print(f"!!!!!\n{listaLocacao1}: {len(listaLocacao1)}\n{listaClientes1}: {len(listaClientes1)}\n{listaCarros1}: {len(listaCarros1)}")
+    for i in range(len(add)): 
     	print(f"""\tCARRO {i+1}:
            CPF: {listaLocacao1[i][0]}
            Nome do cliente: {listaClientes1[i]}

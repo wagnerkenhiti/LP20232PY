@@ -34,7 +34,6 @@ def cadastrar(listaCarros : list) -> bool:
     camposCliente =  ["Identificacao","Modelo","Cor","AnoFabricacao","Placa","Cambio","Categoria","Km","Diaria","Seguro","Disponivel"]
     cliente = apresentacao.CadastrarCarro()
     listaCarros.append(cliente)
-    print(listaCarros)
     return mcsv.gravarDados('Carro.csv', camposCliente, listaCarros )
 
 #################################################################
@@ -64,12 +63,10 @@ def alterar(placa : str) -> bool:
             for linha in linhas:
                 if linha['Placa'] == placa:
                     campo_alterar = input('Qual campo do carro você deseja alterar? (Identificacao;Modelo;Cor;AnoFabricacao;Placa;Cambio;Categoria;Km;Diaria;Seguro;Disponivel): ')
-                    
                     # Verificando se o campo inserido é válido
                     while campo_alterar not in nomes_colunas:
                         print('Campo inválido. Por favor, insira um campo válido.')
                         campo_alterar = input('Qual campo do carro você deseja alterar? (Identificacao;Modelo;Cor;AnoFabricacao;Placa;Cambio;Categoria;Km;Diaria;Seguro;Disponivel): ')
-                    
                     novo_valor = input(f'Informe o novo valor para {campo_alterar}: ')
                     linha[campo_alterar] = novo_valor
 
@@ -99,16 +96,18 @@ def excluir(placa : str) -> bool:
     linhas = []
     try:
         with open('Carro.csv' , 'r') as arquivo:
-            leitor = csv.DictReader(arquivo)
+            leitor = list(csv.DictReader(arquivo,delimiter=';'))
             for linha in leitor:
                 if linha['Placa'] != placa:
                     linhas.append(linha)
+        print(linhas)
         with open('Carro.csv', 'w', newline='') as arquivo:
             nomes_colunas = ['Identificacao', 'Modelo', 'Cor', 'AnoFabricacao', 'Placa', 'Cambio', 'Categoria', 'Km', 'Diaria', 'Seguro', 'Disponivel']
-            escritor = csv.DictWriter(arquivo, fieldnames=nomes_colunas)
+            escritor = csv.DictWriter(arquivo, fieldnames=nomes_colunas,delimiter=';')
             escritor.writeheader()
             escritor.writerows(linhas)
         return True
+        
     except FileNotFoundError:
         print('Arquivo não encontrado.')
         return False
@@ -117,8 +116,15 @@ def excluir(placa : str) -> bool:
 
 def venda():
     lista = carregar()
+    lista1=mcsv.carregarDados("vendas.csv")
+    val = len(lista1)
     camposCliente =  ["Identificacao","Modelo","Cor","AnoFabricacao","Placa","Cambio","Categoria","Km","Diaria","Seguro","Disponivel"]
     for i in lista:
-        if((2024-int(i['AnoFabricacao'])>=3 or int(i['Km'])>60000) and i["Disponivel"].lower()=="sim"):
-            mcsv.gravarDados("vendas.csv",camposCliente,[i])
-            
+        if((2024-int(i['AnoFabricacao'])>=3 or float(i['Km'])>60000) and i["Disponivel"].lower()=="sim"):
+            lista1.append(i)
+            excluir(i['Placa'])
+    if(val!=len(lista1)):
+        print("Lista de vendas atualizada!")
+        mcsv.gravarDados("vendas.csv",camposCliente,lista1)
+    else:
+        print("Nenhuma atualizacao")

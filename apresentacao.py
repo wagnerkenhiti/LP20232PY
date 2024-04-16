@@ -99,10 +99,10 @@ def MenuCarro() -> int:
         print("1. Cadastrar novo carro")
         print("2. Atualizar dados de um carro")
         print("3. Excluir dados de um carro")
-        print("4. Carros de carros a venda")
+        print("4. Atualizar carros a venda")
         print("9. Sair")
         print("-"*50)
-        opcao = print(input("Opcao -> "))
+        opcao = int(input("Opcao -> "))
         print("#"*50)
     return opcao
 

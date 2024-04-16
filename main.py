@@ -58,21 +58,30 @@ def main():
         elif opcao == 2:
             opcao1 = apresentacao.MenuCliente()
             if opcao1 == 1:
-                mcli.cadastrar()
+                lista0=mcsv.carregarDados("Cliente.csv")
+                mcli.cadastrar(lista0)
             elif opcao1 == 2:
-                mcli.alterar()
+                cpf=input("Digite o CPF da pessoa a ter os dados atualizados: ")
+                mcli.alterar(cpf)
             elif opcao1 == 3:
-                mcli.excluir()
+                lista0=mcsv.carregarDados("Cliente.csv")
+                cpf=input("Digite o CPF da pessoa a ter os dados excluidos: ")
+                if(mcli.excluir(lista0,cpf)):
+                    print("Excluido com sucesso!")
             elif opcao1 == 4:
-                mcli.localizarLocacao()
+                identificacao=input("Digite o nome ou CPF para localizar as locacoes do cliete: ")
+                mcli.localizarLocacao(identificacao)
         elif opcao == 3:
             opcao1 = apresentacao.MenuCarro()
             if opcao1 == 1:
-                mcar.cadastrar()
+                lista1=mcsv.carregarDados("Carro.csv")
+                mcar.cadastrar(lista1)
             elif opcao1 == 2:
-                mcar.alterar()
+                placa=input("Digite a placa do carro a ser alterado: ")
+                mcar.alterar(placa)
             elif opcao1 == 3:
-                mcar.excluir()
+                placa=input("Digite a placa do carro a ser excluido: ")
+                mcar.excluir(placa)
             elif opcao1 == 4:
                 mcar.venda()
         opcao = apresentacao.MenuPrincipal()
