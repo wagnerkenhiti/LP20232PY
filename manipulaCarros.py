@@ -25,7 +25,7 @@ def cadastrar(listaCarros : list) -> bool:
 
     Parâmetros
     ----------
-    listaClientes: Lista atual dos carros
+    listaClientes: lista atual dos carros
 
     Retorno
     -------
@@ -51,31 +51,27 @@ def alterar(placa : str) -> bool:
     -------
     Retorna True caso foi alterado com sucesso
     '''
-    linhas = []
+    carros = []
     try:
-        with open('Carro.csv', 'r', newline='') as arquivo_origem:
-            linhas = list(csv.DictReader(arquivo_origem, delimiter=';'))
+        with open('Carros.csv', 'r', newline='') as arquivo_origem:
+            carros = csv.DictReader(arquivo_origem, delimiter=';')
 
-        with open('Carro.csv', 'w', newline='') as arquivo_destino:
-            nomes_colunas = ['Identificacao', 'Modelo', 'Cor', 'AnoFabricacao', 'Placa', 'Cambio', 'Categoria', 'Km', 'Diaria', 'Seguro', 'Disponivel']
+        with open('Carros.csv', 'w', newline='') as arquivo_destino:
+            nomes_colunas = ['Identificacao','Modelo','Cor','AnoFabricacao','Placa','Cambio','Categoria','Km','Diaria','Seguro','Disponivel']
             escritor = csv.DictWriter(arquivo_destino, fieldnames=nomes_colunas, delimiter=';')
             escritor.writeheader()
 
-            for linha in linhas:
-                if linha['Placa'] == placa:
-                    campo_alterar = input('Qual campo do carro você deseja alterar? (Identificacao;Modelo;Cor;AnoFabricacao;Placa;Cambio;Categoria;Km;Diaria;Seguro;Disponivel): ')
+            for carro in carros:
+                if carro['Placa'] == placa:
+                    campo_alterar = int(input('Qual campo do carro você deseja alterar?\n1 - Identificacao\n2 - Modelo\n3 - Cor\n4 - AnoFabricacao\n5 - Placa\n6 - Cambio\n7 - Categoria\n8 - Km\n9 - Diaria\n10 - Seguro\n11 - Disponivel: '))
                     
-                    # Verificando se o campo inserido é válido
-                    while campo_alterar not in nomes_colunas:
-                        print('Campo inválido. Por favor, insira um campo válido.')
-                        campo_alterar = input('Qual campo do carro você deseja alterar? (Identificacao;Modelo;Cor;AnoFabricacao;Placa;Cambio;Categoria;Km;Diaria;Seguro;Disponivel): ')
+                    while campo_alterar < 1 or campo_alterar > 11:
+                        print('Número inválido. Por favor, insira um número válido de 1 a 11.')
+                        campo_alterar = int(input('Qual campo do carro você deseja alterar?\n1 - Identificacao\n2 - Modelo\n3 - Cor\n4 - AnoFabricacao\n5 - Placa\n6 - Cambio\n7 - Categoria\n8 - Km\n9 - Diaria\n10 - Seguro\n11 - Disponivel: '))
                     
-                    novo_valor = input(f'Informe o novo valor para {campo_alterar}: ')
-                    linha[campo_alterar] = novo_valor
-
-                escritor.writerow(linha)
-        arquivo_origem.close()
-        arquivo_destino.close()
+                novo_valor = input(f'Informe o novo valor para {nomes_colunas[campo_alterar - 1]}: ')
+                carro[nomes_colunas[campo_alterar - 1]] = novo_valor
+                escritor.writerow(carro)
         
         return True
     except FileNotFoundError:
@@ -104,7 +100,7 @@ def excluir(placa : str) -> bool:
                 if linha['Placa'] != placa:
                     linhas.append(linha)
         with open('Carro.csv', 'w', newline='') as arquivo:
-            nomes_colunas = ['Identificacao', 'Modelo', 'Cor', 'AnoFabricacao', 'Placa', 'Cambio', 'Categoria', 'Km', 'Diaria', 'Seguro', 'Disponivel']
+            nomes_colunas = ['Identificacao','Modelo','Cor','AnoFabricacao','Placa','Cambio','Categoria','Km','Diaria','Seguro','Disponivel']
             escritor = csv.DictWriter(arquivo, fieldnames=nomes_colunas)
             escritor.writeheader()
             escritor.writerows(linhas)

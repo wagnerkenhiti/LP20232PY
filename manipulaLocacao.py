@@ -207,7 +207,6 @@ def carrosDisponiveis(categoria_procurar) -> bool:
     Retorno
     -------
     Retorna True se o arquivo Carros.csv foi aberto com sucesso e há carros disponiveis em tal categoria
-    Retorna False se o arquivo Carros.csv não foi encontrado ou não carros disponiveis em tal categoria
     '''
     verifica = False
     try:
